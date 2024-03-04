@@ -1,0 +1,146 @@
+# 设置工作流名称
+name: Publish-TvBox-Url-Live-2024
+
+# 设置触发工作流的条件
+on:
+  # 当main分支有新的推送（push）时启动工作流
+#  push:
+#    branches: [ main ]
+  # 设定定时触发条件 （这个设置意味着每2小时执行一次工作流）
+#  schedule:
+#    - cron: '0 */2 * * *'
+  # 允许手动从 GitHub 页面触发此工作流
+  workflow_dispatch:
+
+# 设置一些环境变量
+env:
+  DELETE_RELEASE: true
+  DELETE_ARTIFACTS: true
+  KEEP_DAY: 1
+  KEEP_MININUM_RUNS: 10
+  KEEP_MININUM_RELEASE: 10
+
+# 工作流具体的任务（jobs）
+jobs:
+  # 任务名称
+  Build:
+    # 任务运行环境
+    runs-on: ubuntu-latest
+    # 任务步骤
+    steps:
+      - name: '设置系统时区' # 此步骤设置系统时区
+        run: 
+          sudo timedatectl set-timezone Asia/Shanghai
+
+      - name: Checkout # 利用actions/checkout@v4拉取代码库，来访问之后步骤中要操作的代码
+        uses: actions/checkout@v4
+
+      - name: '设置Python' # 设置 Python 环境，该操作利用 actions/setup-python@v5 来实现 Python 环境的设定
+        uses: actions/setup-python@v5
+        with:
+           python-version: '3.10'
+
+      - name: '安装需求' # 安装 Python 包依赖
+        run: |
+          #pip install requests
+          #python -m pip install -U wheel
+          #pip install qqwry-py3
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install inetutils-ping
+          pip install -r ./res/requirements.txt
+
+      # 以下为一系列 Python 脚本的运行，并使用环境变量，某些步骤的运行会根据前一个步骤的状态来判断是否需要运行
+      - name: '更新过期 Url'
+        id: upexpire
+        env:
+          RESURL: ${{ secrets.RESURL }}
+        run: |
+          python main.py upexpire
+          echo "status=success" >> $GITHUB_OUTPUT
+
+      - name: 'Update tvurl from listurl'
+        id: uptvbox
+        env:
+          RESURL: ${{ secrets.RESURL }}
+        if: steps.upexpire.outputs.status == 'success' && !cancelled()
+        run: |
+          python main.py uptvbox
+          echo "status=success" >> $GITHUB_OUTPUT
+
+      - name: '合并 tvurl'
+        id: checkurl
+        env:
+          RESURL: ${{ secrets.RESURL }}
+        if: steps.uptvbox.outputs.status == 'success' && !cancelled()
+        run: |
+          python main.py check
+          echo "status=success" >> $GITHUB_OUTPUT
+
+      - name: '将新文件与旧文件用 MD5 进行比较' # 通过 MD5 检查新旧文件是否有变动，有变动则替换旧文件，并设置输出状态标记
+        id: diff
+        run: |
+          file1=./out/all
+          file2=./res/all
+          dataline1=$(md5sum $file1|cut -d ' ' -f1)
+          dataline2=$(md5sum $file2|cut -d ' ' -f1)
+          if [ "$dataline1" == "$dataline2" ];then
+            rm $file1
+            echo "Both file are same"
+            echo "status=noupdate" >> $GITHUB_OUTPUT
+          else
+            mv $file1 $file2
+            echo "Both file are different"
+            echo "status=success" >> $GITHUB_OUTPUT
+          fi
+
+ #     - name: 'Send telegram message on push' # 如果有新的文件提交，则通过 telegram 发送信息告知
+ #       env:
+ #         TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+ #         TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+ #       uses: appleboy/telegram-action@master
+ #       if: steps.diff.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
+ #       with:
+ #         to: ${{ secrets.TELEGRAM_TO }}
+ #         token: ${{ secrets.TELEGRAM_TOKEN }}
+ #         message: |
+ #            Mixed Nodes-1: http://185.177.124.24:8080/ipns/k51qzi5uqu5dh78dgxj9xt0od8sk97bxdnr84474rctjuln517hnl3v937di61/
+ #            Mixed Nodes-2: https://gateway.ipfs.io/ipns/k51qzi5uqu5dh78dgxj9xt0od8sk97bxdnr84474rctjuln517hnl3v937di61/
+
+      - name: 'Commit files first' # 提交新的文件到代码库
+        if: steps.diff.outputs.status == 'success' && !cancelled()
+        run: |
+          rm -rf ./cls/__pycache__
+          git config --global user.email actions@github.com
+          git config --global user.name "GitHub Actions"
+          git pull
+          git add .
+          git commit -m "Automatic upgrade by robot at $(date +"%Y.%m.%d.%H%M")" -a
+
+      - name: 'Push changes first' # 将更改推送到远程代码库
+        uses: ad-m/github-push-action@master
+        if: steps.diff.outputs.status == 'success' && !cancelled()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+
+      - name: 'Delete older workflow runs and artifacts new' # 删除旧版本的工作流运行和工作流生成的附件
+        uses: Mattraks/delete-workflow-runs@main
+        if: env.DELETE_ARTIFACTS == 'true'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: ${{ env.KEEP_DAY }}
+          keep_minimum_runs: ${{ env.KEEP_MININUM_RUNS }}
+
+      # 再一次通过 telegram 发送信息告知
+#      - name: 'Send telegram message on push'
+#        env:
+#          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+#          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+#        uses: appleboy/telegram-action@master
+#        if: steps.publish.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+#          message: |
+#             Publish files To ipfs network is finished.
