@@ -1,1 +1,1 @@
-"spider":"https://raw.iqiq.io/MINGERTAI/uri/main/jar/ustom.PNG;md5;112dd3396623b4bebbad3ebd67fb2929",
+"spider":"https://raw.githubusercontent.com/ne7359/url/main/jar/ustom.PNG;md5;112dd3396623b4bebbad3ebd67fb2929",
