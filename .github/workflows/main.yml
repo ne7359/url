@@ -93,18 +93,18 @@ jobs:
             echo "status=success" >> $GITHUB_OUTPUT
           fi
 
-      - name: 'Send telegram message on push' # 如果有新的文件提交，则通过 telegram 发送信息告知
-        env:
-          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        uses: appleboy/telegram-action@master
-        if: steps.diff.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-             Mixed Nodes-1: http://185.177.124.24:8080/ipns/k51qzi5uqu5dh78dgxj9xt0od8sk97bxdnr84474rctjuln517hnl3v937di61/
-             Mixed Nodes-2: https://gateway.ipfs.io/ipns/k51qzi5uqu5dh78dgxj9xt0od8sk97bxdnr84474rctjuln517hnl3v937di61/
+#      - name: 'Send telegram message on push' # 如果有新的文件提交，则通过 telegram 发送信息告知
+#        env:
+#          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+#          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+#        uses: appleboy/telegram-action@master
+#        if: steps.diff.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+#          message: |
+#             Mixed Nodes-1: http://185.177.124.24:8080/ipns/k51qzi5uqu5dh78dgxj9xt0od8sk97bxdnr84474rctjuln517hnl3v937di61/
+#             Mixed Nodes-2: https://gateway.ipfs.io/ipns/k51qzi5uqu5dh78dgxj9xt0od8sk97bxdnr84474rctjuln517hnl3v937di61/
 
       - name: 'Commit files first' # 提交新的文件到代码库
         if: steps.diff.outputs.status == 'success' && !cancelled()
@@ -133,14 +133,14 @@ jobs:
           keep_minimum_runs: ${{ env.KEEP_MININUM_RUNS }}
 
       # 再一次通过 telegram 发送信息告知
-      - name: 'Send telegram message on push'
-        env:
-          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        uses: appleboy/telegram-action@master
-        if: steps.publish.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-             Publish files To ipfs network is finished.
+#      - name: 'Send telegram message on push'
+#        env:
+#          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
+#          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+#        uses: appleboy/telegram-action@master
+#        if: steps.publish.outputs.status == 'success' && env.TELEGRAM_TO != '' && env.TELEGRAM_TOKEN != '' && !cancelled()
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+#          message: |
+#             Publish files To ipfs network is finished.
