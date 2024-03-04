@@ -120,14 +120,14 @@ jobs:
         uses: ad-m/github-push-action@master
         if: steps.diff.outputs.status == 'success' && !cancelled()
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          MY_TOKEN: ${{ secrets.MY_TOKEN }}
           branch: main
 
       - name: 'Delete older workflow runs and artifacts new' # 删除旧版本的工作流运行和工作流生成的附件
         uses: Mattraks/delete-workflow-runs@main
         if: env.DELETE_ARTIFACTS == 'true'
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_TOKEN }}
           repository: ${{ github.repository }}
           retain_days: ${{ env.KEEP_DAY }}
           keep_minimum_runs: ${{ env.KEEP_MININUM_RUNS }}
