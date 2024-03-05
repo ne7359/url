@@ -465,7 +465,7 @@ if(menu == 'uptvbox'):
     tvlist = tvlist.replace(',"jar":"http://freed.yuanhsing.cf/TVBox/MaooXB2/XBiubiuLA4.jar"','')
     #tvlist = tvlist.replace(',"jar":"http://121.46.250.130:8080/ipfs/QmZFDWsm15DiH3WLb2WwgPb136tKPibvMoGKDT41aEpwfa?filename=XBiubiuLA4.jar"','')
     # 我添加
-    tvlist = tvlist.replace(',"jar":"https://raw.githubusercontent.com/MINGERTAI/iurl/main/jar/XBiubiuLA4.jar"','')
+    tvlist = tvlist.replace(',"jar":"https://github.com/ne7359/url/blob/main/jar/XBiubiuLA4.jar"','')
     tvlist = tvlist.replace(',"jar":"http://iurl.leertai.top/jar/XBiubiuLA4.jar"','')
     tvlist = tvlist.replace(',"jar":"https://raw.iqiq.io/vpei/Free-TVUrl-Merge/main/res/XBiubiuLA4.PNG"','')
     # 去除重复项目
