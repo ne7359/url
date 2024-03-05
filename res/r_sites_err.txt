@@ -1564,3 +1564,4 @@
 [2024-03-04 13:11:39] 0:{"key":"csp_xpath_qiumi","name":"球赛直播","type":3,"api":"csp_XPathFilter","searchable":0,"quickSearch":0,"filterable":1,"ext":"https://cdn.staticaly.com/gh/tvba/x/main/516-qiumi.js"},
 [2024-03-04 13:11:39] 404:{"key":"csp_biubiu_555dy","name":"5️⃣555影视(XB)","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://shadowchiu369.github.io/TVBox/MaooXB2/555影视.json"},
 [2024-03-04 13:11:42] 404:{"key":"csp_xpath_qiumi","name":"âš½ç�ƒè¿·","type":3,"api":"csp_XPathFilter","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://raw.liucn.cc/box/sub/ext/djçœ‹ç�ƒ.json"},
+[2024-03-05 10:54:19] 0:{"key":"乐活影视","name":"乐活影视","type":1,"api":"https://lehootv.com/api.php/provide/vod/","searchable":1,"quickSearch":1},

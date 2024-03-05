@@ -1,7 +1,7 @@
 {
-//Update:2024-03-04 13:11:46.034190
+//Update:2024-03-05 11:13:22.678015
 
-"spider":https://raw.githubusercontent.com/ne7359/url/main/jar/ustom.PNG;md5;112dd3396623b4bebbad3ebd67fb2929",
+"spider":"https://raw.githubusercontent.com/ne7359/url/main/jar/ustom.PNG;md5;112dd3396623b4bebbad3ebd67fb2929",
 
 
 "lives":[{"group":"redirect","channels":[{"name":"live","urls":["proxy://do=live&type=txt&ext=aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL0N5cmlsMDU2My9sYW5qaW5nX2xpdmVAbWFpbi9UVmJveF9GcmVlL0xJVkUvRnJlZS90dmJveF9saXZlLnR4dA=="]}]}],
@@ -18,7 +18,6 @@
 {"key":"mtv_pc_小苹果源","name":"小苹果源","type":3,"api":"csp_LiteApple","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"csp_Aidi","name":"csp_Aidi","type":3,"api":"csp_Aidi","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"csp_Anfuns","name":"csp_Anfuns","type":3,"api":"csp_Anfuns","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"乐活影视","name":"乐活影视","type":1,"api":"https://lehootv.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
 {"key":"闪电资源","name":"闪电资源","type":1,"api":"http://sdzyapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
 {"key":"快车资源","name":"快车资源","type":1,"api":"https://caiji.kczyapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
 {"key":"光速资源","name":"光速资源","type":1,"api":"https://api.guangsuapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1},
@@ -125,7 +124,6 @@
 {"key":"热舞","name":"接口被限制即将停用，公众号：分享迷，回复：接口","type":3,"api":"csp_Bili","searchable":0,"quickSearch":0,"filterable":1,"ext":"https://gitcode.net/mtv9527/mao/-/raw/master/xb/%E5%A5%B3%E5%9B%A2%E7%83%AD%E8%88%9E.json","jar":"https://gitcode.net/mtv9527/mao/-/raw/master/0902.jar;md5;D2DED0D4B8B12B325BFCD3B7D1ECD3EA"},
 {"key":"csp_BBB","name":"接口被限制即将停用，公众号：分享迷，回复：接口","type":3,"api":"csp_Bili","searchable":0,"quickSearch":0,"filterable":1,"ext":"https://gitcode.net/mtv9527/mao/-/raw/master/xb/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9.json","jar":"https://gitcode.net/mtv9527/mao/-/raw/master/0902.jar;md5;D2DED0D4B8B12B325BFCD3B7D1ECD3EA"},
 {"key":"push_agent","name":"接口被限制即将停用，公众号：分享迷，回复：接口","type":3,"api":"csp_PushAgent","searchable":0,"quickSearch":0,"filterable":0,"jar":"https://gitcode.net/mtv9527/mao/-/raw/master/0902.jar;md5;D2DED0D4B8B12B325BFCD3B7D1ECD3EA"},
-{"key":"zhaozy","name":"接口被限制即将停用，公众号：分享迷，回复：接口","type":3,"api":"csp_FindZY","searchable":1,"quickSearch":1,"filterable":1,"ext":"8f0b3f0dc1834f309f077ea5549e99a8","jar":"https://gitcode.net/mtv9527/mao/-/raw/master/0830.jar;md5;EAE98CE31FB02CEDE605344C3B942668"},
 {"key":"csp_xml_ck","name":"🎀CK资源","type":1,"api":"https://ckzy.me/api.php/provide/vod/at/xml/","searchable":1,"quickSearch":1,"filterable":0,"categories":["伦理片","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","悬疑片","记录片","犯罪片","奇幻片","电视剧","国产剧","欧美剧","日韩剧","港台剧"]},
 {"key":"Bili","name":"🅱️哔哩套餐","type":3,"api":"csp_Bili","searchable":0,"quickSearch":0,"filterable":0,"ext":"clan://TVBox/MaooxB/bilibili.json"},
 {"key":"软件","name":"🅱️软件教程②","type":3,"api":"csp_Bili","searchable":0,"quickSearch":0,"filterable":1,"ext":"https://link.jscdn.cn/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBb3d0QlVrR3NRUExpVGVRX0J1M3J6RUtRYlJY.json"},
@@ -468,7 +466,7 @@
 {"key":"csp_xpath_qiumi","name":"🏀JRKAN直播","type":3,"api":"csp_XPathFilter","searchable":0,"quickSearch":0,"filterable":0,"ext":"https://download.kstore.space/download/2863/xpath/qiumi.json"},
 {"key":"MV","name":"🎧歌曲MV","type":3,"api":"csp_Bili","searchable":0,"quickSearch":0,"filterable":0,"ext":"https://download.kstore.space/download/2863/xpath/歌曲MV.json"},
 {"key":"csp_biubiu_夜空蓝光","name":"🌌夜空蓝光(XB)","type":3,"api":"csp_XBiubiu","searchable":0,"quickSearch":0,"filterable":0,"ext":"https://download.kstore.space/download/2863/xpath/yklg.json"},
-{"key":"push_agent","name":"🍭推送（爱优腾/磁力/阿里）","type":3,"api":"csp_PushAgent","searchable":0,"quickSearch":0,"filterable":0,"ext":"daae36603bcd490681bdd8d03940783a","jar":"https://raw.githubusercontent.com/MINGERTAI/iurl/main/jar/push_agent.PNG"}
+{"key":"push_agent","name":"🍭推送（爱优腾/磁力/阿里）","type":3,"api":"csp_PushAgent","searchable":0,"quickSearch":0,"filterable":0,"ext":"daae36603bcd490681bdd8d03940783a","jar":"https://raw.githubusercontent.com/ne7359/url/main/jar/push_agent.PNG"}
 
 ],
 
@@ -497,7 +495,6 @@
 {"name":"解63","type":1,"url":"http://vip.26db.cn/c/?url="},
 {"name":"解64","type":1,"url":"http://vip.26db.cn/f/?url="},
 {"name":"解65","type":1,"url":"http://vip.26db.cn/a/?url="},
-{"name":"解87","type":1,"url":"https://www.ikukk.com/?url="},
 {"name":"纯净1","type":1,"url":"https://z1.m1907.top/?jx="}
 ],
 

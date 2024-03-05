@@ -22,5 +22,4 @@
 {"name":"解63","type":1,"url":"http://vip.26db.cn/c/?url="},
 {"name":"解64","type":1,"url":"http://vip.26db.cn/f/?url="},
 {"name":"解65","type":1,"url":"http://vip.26db.cn/a/?url="},
-{"name":"解87","type":1,"url":"https://www.ikukk.com/?url="},
 {"name":"纯净1","type":1,"url":"https://z1.m1907.top/?jx="},

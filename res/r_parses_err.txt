@@ -341,3 +341,4 @@
 [2024-03-04 12:02:31] 0:{"name":"太空","type":1,"url":"http://124.222.68.182/jiexi/4kJX.php/?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","sohu","搜狐","letv","乐视","mgtv","芒果","CL4K","renrenmi","ltnb","bilibili","1905","xigua"]}},
 [2024-03-04 12:02:33] 0:{"name":"集象","type":1,"url":"http://110.42.2.115:880/analysis/json/?uid=2245&my=cdfhirsuwyEGIPU346&url="},
 [2024-03-04 12:02:33] 0:{"name":"VIP1","type":1,"url":"http://110.42.2.115:880/analysis/json/?uid=2233&my=eginqstBCJMNSUX689&url="},
+[2024-03-05 10:53:18] 0:{"name":"解87","type":1,"url":"https://www.ikukk.com/?url="},
